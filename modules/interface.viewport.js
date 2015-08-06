@@ -4,7 +4,7 @@ s_ = require("./../spatie-front.js");
 // Object
 s_.viewport = {
     vhItems: $('[data-viewport-vh]'),
-    toolbar: $('[data-toolbar]'),
+    toolbar: $('[data-viewport-toolbar]'),
     inMotion: false, //can be used to check if page is currently scrolling
     scrollTop: 0,
     measure: function () {
@@ -88,7 +88,7 @@ s_.viewport = {
         return this;
     },
     handlers: function () {
-        $('[data-scroll]').on('click', function (e) {
+        $('[data-viewport]').on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
 
@@ -101,7 +101,7 @@ s_.viewport = {
             return false;
         });
 
-        $('[data-scroll-top]').on('click', function (e) {
+        $('[data-viewport-top]').on('click', function (e) {
             s_.viewport.scrollToY(0);
         });
 
