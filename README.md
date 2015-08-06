@@ -2,7 +2,7 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
-These are the JavaScript files used by Blender CMS.
+These are the JavaScript files for the front end.
 
 Spatie is webdesign agency in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
 
@@ -27,7 +27,7 @@ Include one or more files in your app.js, and build with *Laravel Elixir* and *B
 ``` js
 require("spatie-front.js");
 
-// Viewport magic
+// Front end magic
 
 
 ```
