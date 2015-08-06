@@ -125,7 +125,7 @@ $(window).scroll(function () {
     s_.viewport.update();
 });
 
-modules.exports = s_.viewport;
+module.exports = s_.viewport;
 
 
 
