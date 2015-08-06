@@ -88,7 +88,7 @@ s_.viewport = {
         return this;
     },
     handlers: function () {
-        $('[data-viewport]').on('click', function (e) {
+        $('[data-viewport-scroll]').on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
 
@@ -99,10 +99,6 @@ s_.viewport = {
                 s_.viewport.scrollToElement($(href));
             }
             return false;
-        });
-
-        $('[data-viewport-top]').on('click', function (e) {
-            s_.viewport.scrollToY(0);
         });
 
         return this;
