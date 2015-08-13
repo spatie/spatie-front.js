@@ -12,12 +12,12 @@ This NPM package is custom built for [Spatie](https://spatie.be) projects and is
 In order to install it via NPM you must specify this extra repository in `package.json`:
 
 ```json
-"dependencies": { "spatie-front.js": "git+https://github.com/spatie-custom/spatie-front.js.git#1.0.0" }
+"dependencies": { "spatie-front.js": "git+https://github.com/spatie-custom/spatie-front.js.git" }
 ```
 
 Or you can install the package directly via NPM:
 ``` bash
-$ npm i git+https://github.com/spatie-custom/spatie-front.js.git#1.0.0
+$ npm i git+https://github.com/spatie-custom/spatie-front.js.git
 ```
 
 ## Usage

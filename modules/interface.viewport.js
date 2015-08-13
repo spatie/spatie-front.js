@@ -15,7 +15,7 @@ s_.viewport = {
     },
     fixVH: function () {
         this.vhItems.each(function () {
-            $(this).height(s_.viewport.height / 100 * $(this).data('viewport-vh'));
+            $(this).outerHeight(s_.viewport.height / 100 * $(this).data('viewport-vh'));
         })
 
         return this;

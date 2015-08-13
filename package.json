@@ -1,6 +1,6 @@
 {
   "name": "spatie-front.js",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "Spatie JavaScript for the front end",
   "main": "spatie-front.js",
   "scripts": {
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/spatie-custom/spatie-front.js",
   "dependencies": {
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "js-cookie": "^2.0.3"
   }
 }
