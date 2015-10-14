@@ -3,6 +3,7 @@ s_ = require("./../spatie-front.js");
 
 // Object
 s_.viewport = {
+    element : $('html'),
     vhItems: $('[data-viewport-vh]'),
     toolbar: $('[data-viewport-toolbar]'),
     inMotion: false, //can be used to check if page is currently scrolling
@@ -115,6 +116,8 @@ $(window).resize(function () {
 
 $(window).load(function () {
     s_.viewport.scrollToHash();
+    s_.viewport.element.attr('viewport', 'loaded');
+
 });
 
 $(window).scroll(function () {
