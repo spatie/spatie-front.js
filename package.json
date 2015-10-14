@@ -1,6 +1,6 @@
 {
   "name": "spatie-front.js",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Spatie JavaScript for the front end",
   "main": "spatie-front.js",
   "scripts": {
