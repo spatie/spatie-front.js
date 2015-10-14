@@ -32,10 +32,10 @@ s_.viewport = {
             this.scrollTop = $(window).scrollTop();
         }
         if (this.scrollTop > 0) {
-            $('html').addClass('$scrolled $interacted');
+            s_.viewport.element.addClass('$viewport-scrolled');
         }
         else {
-            $('html').removeClass('$scrolled');
+            s_.viewport.element.removeClass('$viewport-scrolled');
         }
 
         return this;
@@ -116,7 +116,7 @@ $(window).resize(function () {
 
 $(window).load(function () {
     s_.viewport.scrollToHash();
-    s_.viewport.element.attr('viewport', 'loaded');
+    s_.viewport.element.addClass('$viewport-loaded');
 
 });
 
