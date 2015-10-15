@@ -4,6 +4,7 @@ s_ = require("./../spatie-front.js");
 // Object
 s_.viewport = {
     element : $('html'),
+    breakpoint: 0,
     vhItems: $('[data-viewport-vh]'),
     toolbar: $('[data-viewport-toolbar]'),
     inMotion: false, //can be used to check if page is currently scrolling
@@ -11,6 +12,9 @@ s_.viewport = {
     measure: function () {
         this.height = $(window).height();
         this.width = $(window).width();
+        this.breakpoint = parseInt(this.element.data('viewport-breakpoint')) > 0 ? parseInt(this.element.data('viewport-breakpoint')) : 0;
+
+        this.element.toggleClass('$viewport-small', this.breakpoint > this.width );
 
         return this;
     },
