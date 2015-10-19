@@ -14,6 +14,7 @@ s_.viewport = {
         this.height = $(window).height();
         this.width = $(window).width();
         this.breakpoint = parseInt(this.element.data('viewport-breakpoint')) > 0 ? parseInt(this.element.data('viewport-breakpoint')) : 0;
+        this.scrollTreshold = parseInt(this.element.data('viewport-scroll-treshold')) > 0 ? parseInt(this.element.data('viewport-scroll-treshold')) : 0;
 
         //quick breakpoint inspection in js and css
         var smallCondition = (this.breakpoint > this.width);
@@ -39,7 +40,7 @@ s_.viewport = {
         if (!this.inMotion) {
             this.scrollTop = $(window).scrollTop();
         }
-        if (this.scrollTop > 0) {
+        if (this.scrollTop > this.scrollTreshold) {
             s_.viewport.element.addClass('$viewport-scrolled');
         }
         else {
