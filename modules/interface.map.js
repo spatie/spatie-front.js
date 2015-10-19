@@ -4,44 +4,51 @@ var GoogleMapsLoader = require('google-maps');
 
 // Object
 s_.map = {
-    element : $('[data-map]'),
-    readConfiguration : function(){
+    element: $('[data-map]'),
+    readConfiguration: function () {
         this.lat = this.element.data('map-lat');
         this.lng = this.element.data('map-lng');
-        this.lng = this.element.data('map-zoom');
         this.options = this.element.data('map-options');
         this.locations = this.element.data('map-locations');
     },
-    renderMap : function(google){
-        this.options.center = new google.maps.LatLng(this.lat , this.lng);
-        this.map = new google.maps.Map( this.element[0] , this.options);
-    },
-    renderLocations : function(google){
-        this.locations.map(function(){
-            var markerIcon = this.icon;
-            var markerLatLng = new google.maps.LatLng(this.lat,this.lng);
+    renderMap: function (google) {
+        this.options.center = new google.maps.LatLng(this.lat, this.lng);
+        if (typeof this.options.mapTypeId === 'string') { //Load data from HTML: every prop is number, boolean or string. No custom objects
+            this.options.mapTypeId = eval(this.options.mapTypeId);
+        }
 
-            var markerImage = new google.maps.MarkerImage( markerIcon.image, null, null, null, new google.maps.Size( markerIcon.width, markerIcon.height ));
+        this.map = new google.maps.Map(this.element[0], this.options);
+    },
+    renderLocations: function (google) {
+
+        var map = this.map;
+
+        this.locations.map(function (location) {
+            var markerIcon = location.icon;
+            var markerLatLng = new google.maps.LatLng(location.lat, location.lng);
+            var markerImage = new google.maps.MarkerImage(markerIcon.image, null, null, null, new google.maps.Size(markerIcon.width, markerIcon.height));
             var marker = new google.maps.Marker({
                 position: markerLatLng,
-                map: this.map,
+                map: map,
                 flat: true,
-                title: this.title,
+                title: location.title,
                 icon: markerImage
             });
 
-            if(this.url!='') {
+            if (location.url != '') {
                 google.maps.event.addListener(marker, 'click', function () {
-                    window.location.href = this.url;
+                    window.location.href = location.url;
                 });
             }
         });
     },
-    init : function(){
-        GoogleMapsLoader.load(function(google) {
-            this.readConfiguration();
-            this.renderMap(google);
-            this.renderLocations(google);
+    init: function (element) {
+        this.element = element;
+        var map = this;
+        GoogleMapsLoader.load(function (google) {
+            map.readConfiguration();
+            map.renderMap(google);
+            map.renderLocations(google);
         });
     }
 };
