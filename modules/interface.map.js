@@ -13,15 +13,17 @@ s_.map = {
     },
     renderMap: function (google) {
         this.options.center = new google.maps.LatLng(this.lat, this.lng);
+        console.log(this.options.mapTypeId);
         if (typeof this.options.mapTypeId === 'string') { //Load data from HTML: every prop is number, boolean or string. No custom objects
+            console.log("string");
             this.options.mapTypeId = eval(this.options.mapTypeId);
         }
 
-        this.map = new google.maps.Map(this.element[0], this.options);
+        this.renderedMap = new google.maps.Map(this.element[0], this.options);
     },
     renderLocations: function (google) {
 
-        var map = this.map;
+        var renderedMap = this.renderedMap;
 
         this.locations.map(function (location) {
             var markerIcon = location.icon;
@@ -29,7 +31,7 @@ s_.map = {
             var markerImage = new google.maps.MarkerImage(markerIcon.image, null, null, null, new google.maps.Size(markerIcon.width, markerIcon.height));
             var marker = new google.maps.Marker({
                 position: markerLatLng,
-                map: map,
+                map: renderedMap,
                 flat: true,
                 title: location.title,
                 icon: markerImage
@@ -44,12 +46,15 @@ s_.map = {
     },
     init: function (element) {
         this.element = element;
-        var map = this;
-        GoogleMapsLoader.load(function (google) {
-            map.readConfiguration();
-            map.renderMap(google);
-            map.renderLocations(google);
-        });
+
+        if (element.size()){
+            var map = this;
+            GoogleMapsLoader.load(function (google) {
+                map.readConfiguration();
+                map.renderMap(google);
+                map.renderLocations(google);
+            });
+        }
     }
 };
 
