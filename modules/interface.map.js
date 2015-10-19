@@ -30,7 +30,7 @@ s_.map = {
                 icon: markerImage
             });
 
-            if(this.url!=) {
+            if(this.url!='') {
                 google.maps.event.addListener(marker, 'click', function () {
                     window.location.href = this.url;
                 });
